@@ -411,6 +411,8 @@
                     </view>
                     <connections>
                         <outlet property="button1" destination="gXt-Px-PTC" id="Noe-FV-noI"/>
+                        <outlet property="button2" destination="LOL-JM-235" id="3m7-QH-S41"/>
+                        <outlet property="button3" destination="xcv-un-71W" id="YsD-dd-hkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7me-0M-jPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
