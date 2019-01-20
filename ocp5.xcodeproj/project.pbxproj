@@ -58,16 +58,48 @@
 		C1290D3E21C65BF300031442 /* ocp5 */ = {
 			isa = PBXGroup;
 			children = (
-				C1290D3F21C65BF300031442 /* AppDelegate.swift */,
-				C1290D4121C65BF300031442 /* ViewController.swift */,
-				C1290D4321C65BF300031442 /* Main.storyboard */,
+				C1FCB45721F476A500487D60 /* Controller */,
+				C1FCB45621F4767900487D60 /* View */,
+				C1FCB45521F4766000487D60 /* Model */,
+				C1FCB45421F4761400487D60 /* Supporting Files */,
+			);
+			path = ocp5;
+			sourceTree = "<group>";
+		};
+		C1FCB45421F4761400487D60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				C1290D4621C65BF900031442 /* Assets.xcassets */,
+				C1290D3F21C65BF300031442 /* AppDelegate.swift */,
 				C1290D4821C65BF900031442 /* LaunchScreen.storyboard */,
 				C1290D4B21C65BF900031442 /* Info.plist */,
 				C165B5B521E0BDA700752C44 /* Delm-Medium.otf */,
 				C165B5B721E0BDB200752C44 /* ThirstySoftRegular.otf */,
 			);
-			path = ocp5;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1FCB45521F4766000487D60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1FCB45621F4767900487D60 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1290D4321C65BF300031442 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1FCB45721F476A500487D60 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C1290D4121C65BF300031442 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7DBH9F9Z39;
-				INFOPLIST_FILE = ocp5/Info.plist;
+				INFOPLIST_FILE = "ocp5/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7DBH9F9Z39;
-				INFOPLIST_FILE = ocp5/Info.plist;
+				INFOPLIST_FILE = "ocp5/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
