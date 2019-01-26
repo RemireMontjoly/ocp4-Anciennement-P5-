@@ -9,42 +9,75 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
-    @IBOutlet weak var button1: UIButton!
+    //  let grid = GridView()
     
-    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var centralViewLeftUpButton: UIButton!
+    @IBOutlet weak var centralViewRightUpButton: UIButton!
+    @IBOutlet weak var centralViewBottomLeftButton: UIButton!
+    @IBOutlet weak var centralViewBottomRightButton: UIButton!
     
-    @IBOutlet weak var button3: UIButton!
+    
+    @IBOutlet weak var topStackView: UIStackView!
+    @IBOutlet weak var bottomStackView: UIStackView!
+    
+    
+    @IBOutlet weak var rectangleUpButton: UIButton!
+    @IBOutlet weak var rectangleDownButton: UIButton!
+    @IBOutlet weak var fourSquareButton: UIButton!
     
     
     
-    @IBAction func button1Pressed(_ sender: UIButton) {
-        if let image = UIImage(named:"Selected") {
-            sender.setImage(image, for: .normal)
-            button2.imageView?.isHidden = true
-            button3.imageView?.isHidden = true
+    @IBAction func rectangleUpButtonPressed(_ sender: UIButton) {
+        
+        rectangleUpButton.setImage(UIImage(named: "Selected"), for: .selected)
+        rectangleUpButton.isSelected = true
+        
+        rectangleDownButton.isSelected = false
+        fourSquareButton.isSelected = false
+        
+        
+        
+        if bottomStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
+            bottomStackView.addArrangedSubview(centralViewBottomLeftButton)
+            topStackView.removeArrangedSubview(centralViewLeftUpButton)
         }
+    }
+    
+    @IBAction func rectangleDownButtonPressed(_ sender: UIButton) {
+        
+        rectangleDownButton.setImage(UIImage(named: "Selected"), for: .selected)
+        rectangleDownButton.isSelected = true
+        
+        rectangleUpButton.isSelected = false
+        fourSquareButton.isSelected = false
+        
+       
+        if topStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
+            bottomStackView.removeArrangedSubview(centralViewBottomLeftButton)
+            topStackView.addArrangedSubview(centralViewLeftUpButton)
+        }
+        
+        
+    }
+    
+    @IBAction func fourSquareButtonPressed(_ sender: UIButton) {
+        fourSquareButton.setImage(UIImage(named: "Selected"), for: .selected)
+        fourSquareButton.isSelected = true
+        
+        rectangleUpButton.isSelected = false
+        rectangleDownButton.isSelected = false
+        
+        if topStackView.arrangedSubviews.count == 1 {
+       topStackView.addArrangedSubview(centralViewLeftUpButton)
+        } else if bottomStackView.arrangedSubviews.count == 1 {
+            bottomStackView.addArrangedSubview(centralViewBottomLeftButton)
+        }
+            
         
     }
     
     
-    @IBAction func button2Pressed(_ sender: UIButton) {
-        if let image = UIImage(named:"Selected") {
-            sender.setImage(image, for: .normal)
-            button1.imageView?.isHidden = true
-            button3.imageView?.isHidden = true
-        }
-    }
-    
-    
-    @IBAction func button3Pressed(_ sender: UIButton) {
-        if let image = UIImage(named:"Selected") {
-            sender.setImage(image, for: .normal)
-            button1.imageView?.isHidden = true
-            button2.imageView?.isHidden = true
-        }
-    }
     
     
     override func viewDidLoad() {
