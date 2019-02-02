@@ -9,13 +9,58 @@
 import UIKit
 
 class GridView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    // MARK: - outlet
+    
+    @IBOutlet weak var leftUpButton: UIButton!
+    @IBOutlet weak var rightUpButton: UIButton!
+    @IBOutlet weak var bottomLeftButton: UIButton!
+    @IBOutlet weak var bottomRightButton: UIButton!
+    
+    var rectangleUpButton = UIButton()
+    //   var rectangleDownButton = UIButton()
+    
+    @IBOutlet weak var topStackView: UIStackView!
+    @IBOutlet weak var bottomStackView: UIStackView!
+    
+    // MARK: - enum
+    
+    enum State {
+        case rectangleUp, rectangleDown, fourSquare
     }
-    */
-
+    
+    // MARK: - properties
+    
+    var state: State = .rectangleUp {
+        didSet {
+            setGrid(state: state)
+        }
+    }
+    
+    // MARK: - action
+    
+    private func setGrid (state: State) {
+        switch state {
+        case .rectangleUp:
+            if bottomStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
+                bottomStackView.addArrangedSubview(bottomLeftButton)
+                topStackView.removeArrangedSubview(leftUpButton)
+            }
+            
+        case .rectangleDown:
+            if topStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
+             
+               bottomStackView.removeArrangedSubview(bottomLeftButton)
+                topStackView.addArrangedSubview(leftUpButton)
+            }
+            
+        case .fourSquare:
+            if topStackView.arrangedSubviews.count == 1 {
+                topStackView.addArrangedSubview(leftUpButton)
+            } else if bottomStackView.arrangedSubviews.count == 1 {
+                bottomStackView.addArrangedSubview(bottomLeftButton)
+            }
+        }
+    }
+    
 }
