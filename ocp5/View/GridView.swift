@@ -10,16 +10,14 @@ import UIKit
 
 class GridView: UIView {
     
+    let button = UIButton()
+    
     // MARK: - outlet
     
     @IBOutlet weak var leftUpButton: UIButton!
     @IBOutlet weak var rightUpButton: UIButton!
     @IBOutlet weak var bottomLeftButton: UIButton!
     @IBOutlet weak var bottomRightButton: UIButton!
-    
-    var rectangleUpButton = UIButton()
-    //   var rectangleDownButton = UIButton()
-    
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var bottomStackView: UIStackView!
     
@@ -39,28 +37,60 @@ class GridView: UIView {
     
     // MARK: - action
     
-    private func setGrid (state: State) {
-        switch state {
-        case .rectangleUp:
-            if bottomStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
-                bottomStackView.addArrangedSubview(bottomLeftButton)
-                topStackView.removeArrangedSubview(leftUpButton)
-            }
-            
-        case .rectangleDown:
-            if topStackView.arrangedSubviews.count == 1 || (topStackView.arrangedSubviews.count == 2 && bottomStackView.arrangedSubviews.count == 2) {
-             
-               bottomStackView.removeArrangedSubview(bottomLeftButton)
-                topStackView.addArrangedSubview(leftUpButton)
-            }
-            
-        case .fourSquare:
-            if topStackView.arrangedSubviews.count == 1 {
-                topStackView.addArrangedSubview(leftUpButton)
-            } else if bottomStackView.arrangedSubviews.count == 1 {
-                bottomStackView.addArrangedSubview(bottomLeftButton)
-            }
+    @IBAction func upLeftButtonTapped(_ sender: UIButton) {
+        print("up left button tapped")
+    }
+    @IBAction func upRightButtonTapped(_ sender: UIButton) {
+        if state == .rectangleUp {
+            print("rectangle up tapped")
+        } else {
+            print("up right button tapped")
+        }
+    }
+    @IBAction func downLeftButtonTapped(_ sender: UIButton) {
+        print("down left button tapped")
+    }
+    @IBAction func downRightButtonTapped(_ sender: UIButton) {
+        if state == .rectangleDown {
+            print("rectangle down tapped")
+        } else {
+            print("down right button tapped")
         }
     }
     
+    private func setGrid (state: State) {
+        switch state {
+        case .rectangleUp:
+            
+            leftUpButton.isHidden = true
+            rightUpButton.isHidden = false
+            bottomLeftButton.isHidden = false
+            bottomRightButton.isHidden = false
+            
+        case .rectangleDown:
+            
+            leftUpButton.isHidden = false
+            rightUpButton.isHidden = false
+            bottomLeftButton.isHidden = true
+            bottomRightButton.isHidden = false
+            
+        case .fourSquare:
+            
+            leftUpButton.isHidden = false
+            rightUpButton.isHidden = false
+            bottomLeftButton.isHidden = false
+            bottomRightButton.isHidden = false
+        }
+    }
 }
+//    @objc func didTapButton(_ sender: UIButton) {
+//        print("button pressed")
+//    }
+//
+//    //  MARK: - private
+//
+//    private func setUpButtons() {
+//
+//        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+//    }
+

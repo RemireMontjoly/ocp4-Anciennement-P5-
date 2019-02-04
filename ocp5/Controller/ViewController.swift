@@ -19,13 +19,13 @@ class ViewController: UIViewController {
     
     // MARK: - properties
     
-  let button = UIButton()
+    let button = UIButton()
     
     // MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     rectangleDownButtonPressed(rectangleDownButton)
+        rectangleDownButtonPressed(rectangleDownButton)
         
         rectangleUpButton.setImage(UIImage(named: "Selected"), for: .selected)
         rectangleDownButton.setImage(UIImage(named: "Selected"), for: .selected)
@@ -61,39 +61,9 @@ class ViewController: UIViewController {
         rectangleDownButton.isSelected = false
         gridView.state = .fourSquare
     }
-        
-    @IBAction func leftUpButtonTapped(_ sender: UIButton) {
-       
-      print("Left up button tapped")
-        
-    }
     
-    @IBAction func rightUpButtonTapped(_ sender: UIButton) {
-        if gridView.state == .rectangleUp {
-            print("rectangle up tapped")
-        } else {
-            print("right up button tapped")
-        }
-    }
-    
-    @IBAction func leftDownButtonTapped(_ sender: UIButton) {
-       
-            print("Left down button tapped")
-        
-    }
-    
-    @IBAction func rightDownButtonTapped(_ sender: UIButton) {
-        if gridView.state == .rectangleDown {
-            print("rectangle down tapped")
-        } else {
-            print("right down button tapped")
-        }
-    }
-    
-    
-    
-    
-    
+}
+
 //
 //    @objc func didTapButton(_ sender: UIButton) {
 //        print("button pressed")
@@ -106,9 +76,9 @@ class ViewController: UIViewController {
 //        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
 //        
 //    }
-    
-    
 
-    
-}
+
+
+
+
 
