@@ -112,7 +112,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="upLeftButtonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="uy6-ee-tlx"/>
+                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="snZ-Lq-gzO"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVK-re-d9B" userLabel="rightUpButton">
@@ -120,7 +120,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="upRightButtonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="bNr-1h-ypg"/>
+                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="HSp-NV-Hdb"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -133,7 +133,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="downLeftButtonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="3bn-ZS-8uf"/>
+                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="f87-oz-jp3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rr-Z5-e0U" userLabel="bottom Right Button">
@@ -141,7 +141,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="downRightButtonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="zvz-Ef-ghz"/>
+                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="dbw-o2-gip"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

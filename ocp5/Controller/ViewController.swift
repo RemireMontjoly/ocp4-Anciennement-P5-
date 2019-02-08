@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     
     // MARK: - properties
     
-    let button = UIButton()
+    private var selectedButton: Int?
+    
+    // let button = UIButton()
     
     // MARK: - lifecycle
     
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
         rectangleUpButton.setImage(UIImage(named: "Selected"), for: .selected)
         rectangleDownButton.setImage(UIImage(named: "Selected"), for: .selected)
         fourSquareButton.setImage(UIImage(named: "Selected"), for: .selected)
+        gridView.delegate = self
     }
     
     // MARK: - actions
@@ -61,7 +64,21 @@ class ViewController: UIViewController {
         rectangleDownButton.isSelected = false
         gridView.state = .fourSquare
     }
-    
+}
+
+extension ViewController: GridViewDelegate {
+    func gridView(didSelectedButton tag: Int) {
+        
+        selectedButton = tag
+        
+        print("selected Button Tag = \(selectedButton!)")
+        
+        // 1.UIImagePickerController
+        
+        // 2.UIImagePickerControllerDelegate - getImage
+        
+        //3.UIImagePickerControllerDelegate - gridView.setImage(UIImage, tag)
+    }
 }
 
 //
