@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol GridViewDelegate: class {              //   Protocol declaration
-    func gridView(didSelectedButton tag: Int)   // class ???????c'est quoi déjà?lié à weak var delegate...?
+protocol GridViewDelegate: class {
+    func gridView(didSelectedButton tag: Int)
 }
 // DELEGATOR
 class GridView: UIView {
     
     // MARK: - outlet
     
-    @IBOutlet weak var leftUpButton: UIButton! {  // L'état de la var (donc tag)change à l'appui?
+    @IBOutlet weak var leftUpButton: UIButton! {  
         didSet {
             leftUpButton.tag = 1
         }
@@ -41,42 +41,35 @@ class GridView: UIView {
     
     // MARK: - properties
     
+    // var buttonsArray = [leftUpButton, rightUpButton, bottomLeftButton, bottomRightButton]() NE FONCTIONNE PAS?
+    
     var state: State = .rectangleUp {
         didSet {
             setGrid(state: state)
         }
     }
     
-    weak var delegate: GridViewDelegate?      //////////// DELEGATE.  // weak c'est quoi? retain cycle...
+    weak var delegate: GridViewDelegate?
     
     // MARK: - action
     
-    @IBAction func buttonTapped(_sender: UIButton) {
-        print("Le bouton appuyé a comme Tag: \(_sender.tag) ")
-        delegate?.gridView(didSelectedButton: _sender.tag)
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        print("Le bouton appuyé a comme Tag: \(sender.tag) ")
+        delegate?.gridView(didSelectedButton: sender.tag)
     }
     
-//    @IBAction func upLeftButtonTapped(_ sender: UIButton) {
-//        print("up left button tapped")
-//    }
-//    @IBAction func upRightButtonTapped(_ sender: UIButton) {
-//        if state == .rectangleUp {
-//            print("rectangle up tapped")
-//        } else {
-//            print("up right button tapped")
-//        }
-//    }
-//    @IBAction func downLeftButtonTapped(_ sender: UIButton) {
-//        print("down left button tapped")
-//    }
-//    @IBAction func downRightButtonTapped(_ sender: UIButton) {
-//        if state == .rectangleDown {
-//            print("rectangle down tapped")
-//        } else {
-//            print("down right button tapped")
-//        }
-//    }
-    
+    func setImage(_ image: UIImage, for tag: Int) {
+        
+        if leftUpButton.tag == tag {
+            leftUpButton.setImage(image, for: .normal)
+        } else if rightUpButton.tag == tag {
+            rightUpButton.setImage(image, for: .normal)
+        } else if bottomLeftButton.tag == tag {
+            bottomLeftButton.setImage(image, for: .normal)
+        } else if bottomRightButton.tag == tag {
+            bottomRightButton.setImage(image, for: .normal)
+        }
+    }
     // MARK: - enum
     
     enum State {
@@ -108,14 +101,5 @@ class GridView: UIView {
         }
     }
 }
-//    @objc func didTapButton(_ sender: UIButton) {
-//        print("button pressed")
-//    }
-//
-//    //  MARK: - private
-//
-//    private func setUpButtons() {
-//
-//        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-//    }
+
 

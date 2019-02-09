@@ -19,20 +19,20 @@ class ViewController: UIViewController {
     
     // MARK: - properties
     
-    private var selectedButton: Int?
-    
-    // let button = UIButton()
+    private var selectedButtonTag: Int?
+    private let imagePickerController = UIImagePickerController()
     
     // MARK: - lifecycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         rectangleDownButtonPressed(rectangleDownButton)
-        
         rectangleUpButton.setImage(UIImage(named: "Selected"), for: .selected)
         rectangleDownButton.setImage(UIImage(named: "Selected"), for: .selected)
         fourSquareButton.setImage(UIImage(named: "Selected"), for: .selected)
         gridView.delegate = self
+        imagePickerController.delegate = self
     }
     
     // MARK: - actions
@@ -40,17 +40,14 @@ class ViewController: UIViewController {
     @IBAction func rectangleUpButtonPressed(_ sender: UIButton) {
         
         rectangleUpButton.isSelected = true
-        
         rectangleDownButton.isSelected = false
         fourSquareButton.isSelected = false
         gridView.state = .rectangleUp
-        
     }
     
     @IBAction func rectangleDownButtonPressed(_ sender: UIButton) {
         
         rectangleDownButton.isSelected = true
-        
         rectangleUpButton.isSelected = false
         fourSquareButton.isSelected = false
         gridView.state = .rectangleDown
@@ -59,7 +56,6 @@ class ViewController: UIViewController {
     @IBAction func fourSquareButtonPressed(_ sender: UIButton) {
         
         fourSquareButton.isSelected = true
-        
         rectangleUpButton.isSelected = false
         rectangleDownButton.isSelected = false
         gridView.state = .fourSquare
@@ -67,32 +63,24 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: GridViewDelegate {
+    
     func gridView(didSelectedButton tag: Int) {
         
-        selectedButton = tag
-        
-        print("selected Button Tag = \(selectedButton!)")
-        
-        // 1.UIImagePickerController
-        
-        // 2.UIImagePickerControllerDelegate - getImage
-        
-        //3.UIImagePickerControllerDelegate - gridView.setImage(UIImage, tag)
+        selectedButtonTag = tag
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
 }
 
-//
-//    @objc func didTapButton(_ sender: UIButton) {
-//        print("button pressed")
-//    }
-//
-//    //  MARK: - private
-//
-//    private func setUpButtons() {
-//
-//        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-//        
-//    }
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            gridView.setImage(image, for: selectedButtonTag!)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
 
 
 

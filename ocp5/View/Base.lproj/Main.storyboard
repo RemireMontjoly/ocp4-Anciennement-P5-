@@ -112,7 +112,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="snZ-Lq-gzO"/>
+                                                            <action selector="buttonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="zxH-sx-3FP"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVK-re-d9B" userLabel="rightUpButton">
@@ -120,7 +120,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="HSp-NV-Hdb"/>
+                                                            <action selector="buttonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="Yz3-gr-uLc"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -133,7 +133,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="f87-oz-jp3"/>
+                                                            <action selector="buttonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="oPG-Xq-L6Q"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rr-Z5-e0U" userLabel="bottom Right Button">
@@ -141,7 +141,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape-1"/>
                                                         <connections>
-                                                            <action selector="buttonTappedWith_sender:" destination="DRH-wR-afP" eventType="touchUpInside" id="dbw-o2-gip"/>
+                                                            <action selector="buttonTapped:" destination="DRH-wR-afP" eventType="touchUpInside" id="kZz-8Y-YOx"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
