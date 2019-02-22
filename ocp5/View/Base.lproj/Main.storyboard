@@ -209,6 +209,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.84313725490196079" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8Aq-Ij-2Ia" firstAttribute="top" secondItem="jLj-n3-kau" secondAttribute="bottom" constant="8.5" id="27a-Zp-dcK"/>
                             <constraint firstItem="gXt-Px-PTC" firstAttribute="top" secondItem="kGs-zU-Uu5" secondAttribute="top" constant="59" id="4YR-Yj-6RX"/>
@@ -374,15 +375,24 @@
                                 <exclude reference="l1W-pG-3uH"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zYK-hz-zuZ" appends="YES" id="ZPQ-rP-lb7"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="fourSquareButton" destination="xcv-un-71W" id="4FP-Ig-Xh3"/>
                         <outlet property="gridView" destination="DRH-wR-afP" id="5iK-RP-alm"/>
                         <outlet property="rectangleDownButton" destination="LOL-JM-235" id="PjP-MS-WqU"/>
                         <outlet property="rectangleUpButton" destination="gXt-Px-PTC" id="Hkr-TO-4dw"/>
+                        <outlet property="textLabel" destination="8Aq-Ij-2Ia" id="iXl-Xs-X8k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7me-0M-jPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="zYK-hz-zuZ">
+                    <connections>
+                        <action selector="didSwipe:" destination="7n5-V7-PP3" id="MoV-wg-SfK"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1006" y="-59"/>
         </scene>

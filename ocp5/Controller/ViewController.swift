@@ -12,15 +12,17 @@ class ViewController: UIViewController {
     
     // MARK: - outlets
     
-    @IBOutlet weak var rectangleUpButton: UIButton!
-    @IBOutlet weak var rectangleDownButton: UIButton!
-    @IBOutlet weak var fourSquareButton: UIButton!
-    @IBOutlet weak var gridView: GridView!
+    @IBOutlet private weak var rectangleUpButton: UIButton!
+    @IBOutlet private weak var rectangleDownButton: UIButton!
+    @IBOutlet private weak var fourSquareButton: UIButton!
+    @IBOutlet private weak var gridView: GridView!
+    @IBOutlet private weak var textLabel: UILabel!
     
     // MARK: - properties
     
     private var selectedButtonTag: Int?
     private let imagePickerController = UIImagePickerController()
+    private var swipeDirection: UISwipeGestureRecognizer.Direction = .up
     
     // MARK: - lifecycle
     
@@ -35,9 +37,20 @@ class ViewController: UIViewController {
         imagePickerController.delegate = self
     }
     
+    override func viewWillLayoutSubviews() {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            textLabel.text = "Swipe left to share"
+            swipeDirection = .left
+            
+        } else {
+            textLabel.text = "Swipe up to share"
+            swipeDirection = .up
+        }
+    }
+    
     // MARK: - actions
     
-    @IBAction func rectangleUpButtonPressed(_ sender: UIButton) {
+    @IBAction private func rectangleUpButtonPressed(_ sender: UIButton) {
         
         rectangleUpButton.isSelected = true
         rectangleDownButton.isSelected = false
@@ -45,7 +58,7 @@ class ViewController: UIViewController {
         gridView.state = .rectangleUp
     }
     
-    @IBAction func rectangleDownButtonPressed(_ sender: UIButton) {
+    @IBAction private func rectangleDownButtonPressed(_ sender: UIButton) {
         
         rectangleDownButton.isSelected = true
         rectangleUpButton.isSelected = false
@@ -53,12 +66,23 @@ class ViewController: UIViewController {
         gridView.state = .rectangleDown
     }
     
-    @IBAction func fourSquareButtonPressed(_ sender: UIButton) {
+    @IBAction private func fourSquareButtonPressed(_ sender: UIButton) {
         
         fourSquareButton.isSelected = true
         rectangleUpButton.isSelected = false
         rectangleDownButton.isSelected = false
         gridView.state = .fourSquare
+    }
+    
+    @IBAction private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        
+        print("Swiped")
+        sender.direction = swipeDirection
+        
+        let image = gridView.asImage()
+        
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(activityViewController, animated: true)
     }
 }
 
@@ -75,8 +99,9 @@ extension ViewController: GridViewDelegate {
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            gridView.setImage(image, for: selectedButtonTag!)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let tag = selectedButtonTag {
+            gridView.setImage(image, for: tag)
         }
         dismiss(animated: true, completion: nil)
     }

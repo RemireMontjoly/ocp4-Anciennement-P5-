@@ -16,32 +16,30 @@ class GridView: UIView {
     
     // MARK: - outlet
     
-    @IBOutlet weak var leftUpButton: UIButton! {  
+    @IBOutlet private weak var leftUpButton: UIButton! {
         didSet {
             leftUpButton.tag = 1
         }
     }
-    @IBOutlet weak var rightUpButton: UIButton! {
+    @IBOutlet private weak var rightUpButton: UIButton! {
         didSet {
             rightUpButton.tag = 2
         }
     }
-    @IBOutlet weak var bottomLeftButton: UIButton! {
+    @IBOutlet private weak var bottomLeftButton: UIButton! {
         didSet {
             bottomLeftButton.tag = 3
         }
     }
-    @IBOutlet weak var bottomRightButton: UIButton! {
+    @IBOutlet private weak var bottomRightButton: UIButton! {
         didSet {
             bottomRightButton.tag = 4
         }
     }
-    @IBOutlet weak var topStackView: UIStackView!
-    @IBOutlet weak var bottomStackView: UIStackView!
+    @IBOutlet private weak var topStackView: UIStackView!
+    @IBOutlet private weak var bottomStackView: UIStackView!
     
     // MARK: - properties
-    
-    // var buttonsArray = [leftUpButton, rightUpButton, bottomLeftButton, bottomRightButton]() NE FONCTIONNE PAS?
     
     var state: State = .rectangleUp {
         didSet {
@@ -53,7 +51,7 @@ class GridView: UIView {
     
     // MARK: - action
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
+    @IBAction private func buttonTapped(_ sender: UIButton) {
         print("Le bouton appuyé a comme Tag: \(sender.tag) ")
         delegate?.gridView(didSelectedButton: sender.tag)
     }
@@ -70,6 +68,15 @@ class GridView: UIView {
             bottomRightButton.setImage(image, for: .normal)
         }
     }
+    
+    func asImage() -> UIImage {
+        
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+    
     // MARK: - enum
     
     enum State {
