@@ -384,6 +384,7 @@
                         <outlet property="gridView" destination="DRH-wR-afP" id="5iK-RP-alm"/>
                         <outlet property="rectangleDownButton" destination="LOL-JM-235" id="PjP-MS-WqU"/>
                         <outlet property="rectangleUpButton" destination="gXt-Px-PTC" id="Hkr-TO-4dw"/>
+                        <outlet property="swipeGestureRecognizer" destination="zYK-hz-zuZ" id="nOF-Dh-RET"/>
                         <outlet property="textLabel" destination="8Aq-Ij-2Ia" id="iXl-Xs-X8k"/>
                     </connections>
                 </viewController>

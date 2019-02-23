@@ -17,12 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet private weak var fourSquareButton: UIButton!
     @IBOutlet private weak var gridView: GridView!
     @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var swipeGestureRecognizer: UISwipeGestureRecognizer!
     
     // MARK: - properties
     
     private var selectedButtonTag: Int?
     private let imagePickerController = UIImagePickerController()
-    private var swipeDirection: UISwipeGestureRecognizer.Direction = .up
     
     // MARK: - lifecycle
     
@@ -40,11 +40,11 @@ class ViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
             textLabel.text = "Swipe left to share"
-            swipeDirection = .left
+            swipeGestureRecognizer.direction = .left
             
         } else {
             textLabel.text = "Swipe up to share"
-            swipeDirection = .up
+            swipeGestureRecognizer.direction = .up
         }
     }
     
@@ -76,11 +76,7 @@ class ViewController: UIViewController {
     
     @IBAction private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         
-        print("Swiped")
-        sender.direction = swipeDirection
-        
         let image = gridView.asImage()
-        
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activityViewController, animated: true)
     }
