@@ -68,13 +68,22 @@ class GridView: UIView {
             bottomRightButton.setImage(image, for: .normal)
         }
     }
-    
+    // Capture
     func asImage() -> UIImage {
         
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
         }
+    }
+    
+    // Bonus : animation
+    
+    func animation() {
+        self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            self.transform = .identity
+        }, completion: nil)
     }
     
     // MARK: - enum

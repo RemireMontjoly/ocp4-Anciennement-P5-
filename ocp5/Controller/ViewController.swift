@@ -37,7 +37,8 @@ class ViewController: UIViewController {
         imagePickerController.delegate = self
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
             textLabel.text = "Swipe left to share"
             swipeGestureRecognizer.direction = .left
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
         rectangleDownButton.isSelected = false
         fourSquareButton.isSelected = false
         gridView.state = .rectangleUp
+        gridView.animation()
     }
     
     @IBAction private func rectangleDownButtonPressed(_ sender: UIButton) {
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
         rectangleUpButton.isSelected = false
         fourSquareButton.isSelected = false
         gridView.state = .rectangleDown
+        gridView.animation()
     }
     
     @IBAction private func fourSquareButtonPressed(_ sender: UIButton) {
@@ -72,6 +75,7 @@ class ViewController: UIViewController {
         rectangleUpButton.isSelected = false
         rectangleDownButton.isSelected = false
         gridView.state = .fourSquare
+        gridView.animation()
     }
     
     @IBAction private func didSwipe(_ sender: UISwipeGestureRecognizer) {
