@@ -107,7 +107,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
 }
 
-
+extension UIImagePickerController {
+    override open var shouldAutorotate: Bool { return true }
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .all}
+}
 
 
 
