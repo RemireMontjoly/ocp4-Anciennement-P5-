@@ -9,9 +9,9 @@
 import UIKit
 
 protocol GridViewDelegate: class {
-    func gridView(didSelectedButton tag: Int)
+    func gridView(_ gridView: GridView, didSelectButton tag: Int)
 }
-// DELEGATOR
+
 class GridView: UIView {
     
     // MARK: - outlet
@@ -49,11 +49,18 @@ class GridView: UIView {
     
     weak var delegate: GridViewDelegate?
     
-    // MARK: - action
+    enum State {
+        case rectangleUp, rectangleDown, fourSquare
+    }
     
-    @IBAction private func buttonTapped(_ sender: UIButton) {
-        print("Le bouton appuyé a comme Tag: \(sender.tag) ")
-        delegate?.gridView(didSelectedButton: sender.tag)
+    // MARK: - public
+    
+    func asImage() -> UIImage {
+        
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
     }
     
     func setImage(_ image: UIImage, for tag: Int) {
@@ -68,14 +75,23 @@ class GridView: UIView {
             bottomRightButton.setImage(image, for: .normal)
         }
     }
-    // Capture
-    func asImage() -> UIImage {
-        
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
+    
+    func gridDisappear(orientationPortrait: Bool) {
+        let translationTransform: CGAffineTransform
+        if orientationPortrait == true {
+            translationTransform = CGAffineTransform(translationX: 0, y:  -1000)
+        } else {
+            translationTransform = CGAffineTransform(translationX: -1000, y: 0)
         }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.transform = translationTransform
+        }, completion: nil)
     }
+    
+    func gridAppear() {
+        self.transform = .identity
+    }
+    
     
     // Bonus : animation
     
@@ -86,11 +102,13 @@ class GridView: UIView {
         }, completion: nil)
     }
     
-    // MARK: - enum
+    // MARK: - action
     
-    enum State {
-        case rectangleUp, rectangleDown, fourSquare
+    @IBAction private func buttonTapped(_ sender: UIButton) {
+        delegate?.gridView(self, didSelectButton: sender.tag)
     }
+    
+    // MARK: private
     
     private func setGrid (state: State) {
         switch state {

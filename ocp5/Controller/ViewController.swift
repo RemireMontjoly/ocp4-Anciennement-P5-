@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     private var selectedButtonTag: Int?
     private let imagePickerController = UIImagePickerController()
-    
+    private var orientationPortraitBool = true
     // MARK: - lifecycle
     
     override func viewDidLoad() {
@@ -42,10 +42,11 @@ class ViewController: UIViewController {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
             textLabel.text = "Swipe left to share"
             swipeGestureRecognizer.direction = .left
-            
+            orientationPortraitBool = false
         } else {
             textLabel.text = "Swipe up to share"
             swipeGestureRecognizer.direction = .up
+            orientationPortraitBool = true
         }
     }
     
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        
+        gridView.gridDisappear(orientationPortrait: orientationPortraitBool)
         let image = gridView.asImage()
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activityViewController, animated: true)
@@ -88,8 +89,7 @@ class ViewController: UIViewController {
 
 extension ViewController: GridViewDelegate {
     
-    func gridView(didSelectedButton tag: Int) {
-        
+    func gridView(_ gridView: GridView, didSelectButton tag: Int) {
         selectedButtonTag = tag
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
